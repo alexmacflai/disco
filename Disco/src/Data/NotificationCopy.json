@@ -1,0 +1,100 @@
+
+
+{
+  "schemaVersion": 1,
+  "placeholders": {
+    "elapsedSeconds": "Total seconds since disconnect started",
+    "elapsedMinutes": "Floor(elapsedSeconds / 60)",
+    "elapsedHours": "Floor(elapsedSeconds / 3600)"
+  },
+  "stages": [
+    {
+      "id": "friendly",
+      "startAfterSeconds": 0,
+      "intervalSeconds": { "min": 5, "max": 15 },
+      "messages": [
+        {
+          "id": "friendly_01",
+          "title": "Quick check-in",
+          "body": "Just making sure you’re okay out there. ({elapsedMinutes}m)"
+        },
+        {
+          "id": "friendly_02",
+          "title": "Still alive?",
+          "body": "No rush. Just… confirming you exist. ({elapsedSeconds}s)"
+        },
+        {
+          "id": "friendly_03",
+          "title": "All good?",
+          "body": "You’ve been away for {elapsedMinutes} minutes. Proud of you. Probably."
+        }
+      ]
+    },
+    {
+      "id": "concerned",
+      "startAfterSeconds": 30,
+      "intervalSeconds": { "min": 10, "max": 30 },
+      "messages": [
+        {
+          "id": "concerned_01",
+          "title": "Checking again",
+          "body": "It’s been {elapsedMinutes} minutes. Everything still… normal?"
+        },
+        {
+          "id": "concerned_02",
+          "title": "We noticed",
+          "body": "Your absence has been logged. ({elapsedMinutes}m)"
+        },
+        {
+          "id": "concerned_03",
+          "title": "Just a reminder",
+          "body": "You can come back whenever you’re ready. We’ll be here."
+        }
+      ]
+    },
+    {
+      "id": "worried",
+      "startAfterSeconds": 60,
+      "intervalSeconds": { "min": 3, "max": 8 },
+      "messages": [
+        {
+          "id": "worried_01",
+          "title": "Are you ignoring us?",
+          "body": "It’s been {elapsedMinutes} minutes. Please confirm you’re still engaged."
+        },
+        {
+          "id": "worried_02",
+          "title": "This is unusual",
+          "body": "We’re not used to this much silence. ({elapsedMinutes}m)"
+        },
+        {
+          "id": "worried_03",
+          "title": "We can help",
+          "body": "If you’re feeling disconnected, we can offer fresh stimuli immediately."
+        }
+      ]
+    },
+    {
+      "id": "judgmental",
+      "startAfterSeconds": 1500,
+      "intervalSeconds": { "min": 15, "max": 45 },
+      "messages": [
+        {
+          "id": "judgmental_01",
+          "title": "Interesting choice",
+          "body": "{elapsedMinutes} minutes offline. Bold."
+        },
+        {
+          "id": "judgmental_02",
+          "title": "Status update",
+          "body": "Your productivity has not been verified. ({elapsedMinutes}m)"
+        },
+        {
+          "id": "judgmental_03",
+          "title": "We tried to reach you",
+          "body": "Multiple attempts were made. Your silence is noted."
+        }
+      ]
+    }
+  ]
+}
